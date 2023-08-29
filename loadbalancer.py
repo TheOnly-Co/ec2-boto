@@ -1,5 +1,5 @@
 import boto3
-
+lb_east = boto3.client('elbv2', region_name='us-east-1')
 client = boto3.client('elbv2')
 
 response = client.create_load_balancer(
