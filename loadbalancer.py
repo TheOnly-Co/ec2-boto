@@ -3,14 +3,14 @@ import boto3
 client = boto3.client('elbv2')
 
 response = client.create_load_balancer(
-    LoadBalancerName='string',
+    LoadBalancerName='boto3',
     Listeners=[
         {
-            'Protocol': 'string',
-            'LoadBalancerPort': 123,
-            'InstanceProtocol': 'string',
-            'InstancePort': 123,
-            'SSLCertificateId': 'string'
+            'Protocol': 'http',
+            'LoadBalancerPort': 8080,
+            'InstanceProtocol': 'http',
+            'InstancePort': 8080,
+#            'SSLCertificateId': 'string'
         },
     ],
     AvailabilityZones=[

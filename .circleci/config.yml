@@ -14,7 +14,7 @@ jobs:
           command: pip install -U pytest
       - run:
           name: Run tests
-          command: python3 -m pytest
+          command: python3 -m pytest loadbalancer.py
       - run:
           name: install requirements
           command: pip install -r requirements.txt 
