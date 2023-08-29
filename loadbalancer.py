@@ -1,6 +1,15 @@
 import boto3
-lb_east = boto3.client('elbv2', region_name='us-east-1')
-client = boto3.client('elbv2')
+from botocore.config import Config
+
+my_config = Config(
+    region_name = 'us-east-1',
+    signature_version = 'v4',
+    retries = {
+        'max_attempts': 10,
+        'mode': 'standard'
+    }
+)
+client = boto3.client('elbv2', config=my_config)
 
 response = client.create_load_balancer(
     LoadBalancerName='boto3',
