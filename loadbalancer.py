@@ -1,41 +1,25 @@
 import boto3
-from botocore.config import Config
 
-my_config = Config(
-    region_name = 'us-east-1',
-    signature_version = 'v4',
-    retries = {
-        'max_attempts': 10,
-        'mode': 'standard'
-    }
-)
-client = boto3.client('elbv2', config=my_config)
+client = boto3.client('elbv2')
 
 response = client.create_load_balancer(
-    LoadBalancerName='boto3',
+    Name='my-load',
     Listeners=[
         {
-            'Protocol': 'http',
+            'Protocol': 'https',
             'LoadBalancerPort': 8080,
-            'InstanceProtocol': 'http',
+            'InstanceProtocol': 'string',
             'InstancePort': 8080,
-#            'SSLCertificateId': 'string'
+            'SSLCertificateId': 'string'
         },
     ],
     AvailabilityZones=[
-        'string',
+        'us-east-1b',
     ],
     Subnets=[
-        'string',
+        'subnet-065dbdb78e460f4f2',
     ],
     SecurityGroups=[
-        'string',
-    ],
-    Scheme='string',
-    Tags=[
-        {
-            'Key': 'string',
-            'Value': 'string'
-        },
+        'sg-03a9b6d9353ccb94d',
     ]
 )
